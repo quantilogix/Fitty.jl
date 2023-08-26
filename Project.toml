@@ -1,0 +1,13 @@
+name = "Fitty"
+uuid = "57c5ac2e-48a2-42da-90d9-e5e1b4869ddf"
+authors = ["Raibatak Das"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.9"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
