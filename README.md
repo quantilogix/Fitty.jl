@@ -24,10 +24,10 @@ Below are some short demos of package features
 
 ### Least squares minimization
 
-`Fitty` implements the Levenberg-Marquardt algorithm that is accessible via the low level `LMfit()` function. The following code block uses this function to minimize the [Rosenbrock banana function](https://en.wikipedia.org/wiki/Rosenbrock_function):
+`Fitty` implements the Levenberg-Marquardt algorithm that is accessible via the low level `LMfit()` function. The following code block uses this function to minimize the [Rosenbrock :banana function](https://en.wikipedia.org/wiki/Rosenbrock_function):  
 $$ f(x, y) = (1 - x)^2 + 100 \cdot (y - x^2)^2 $$
 
-that has a single global minimum at (1, 1) within a narrow valley. Below, this function is defined as a vector of two "residuals", such that the sum of the squared residuals is the Rosenbrock function that is minimized starting with an initial guess that is passed as input to `Fitty.LMfit()`.
+that has a single global minimum at $x = y = 1$ inside a long, narrow and non-convex valley. To use `Fitty`, the function is defined as a vector of two residuals such that the sum of the squared residuals (SSR) is the function defined above. This residuals and an initial guess are supplied as inputs to `Fitty.LMfit()` to minimize the SSR.
 
 ```julia
 julia> # Define Rosenbrock function
