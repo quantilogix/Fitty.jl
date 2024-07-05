@@ -106,7 +106,9 @@ The two subsets are plotted below:
 ### Define model and residual
 
 These data are fit with the Michelis Menten model that relates the reaction rate, $v$, to the substrate concentration, $c$:
-$$ v = \frac{V_{\text{max}} \cdot c}{K_m + c} $$
+```math
+v = \frac{V_{\text{max}} \cdot c}{K_m + c}
+```
 
 where $V_{\text{max}}$ is the maximal reaction rate, and the $K_m$ (Michelis constant) is the substrate concentration for half-maximal reaction velocity ($v = V_{\text{max}}/2$ when $c = K_m$). To fit the data to this model:
 
