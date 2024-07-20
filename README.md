@@ -29,7 +29,7 @@ $$ f(x, y) = (1 - x)^2 + 100 \cdot (y - x^2)^2 $$
 
 This function has a single global minimum at $x = y = 1$ that lies within a long, narrow and non-convex valley. Nonlinear least square algorithms can get stuck in the valley but not be able to converge to the minima. To minimize this function, first define a **residual function** that returns a vector of residuals:
 
-$$ \begin{pmatrix} \epsilon_1 \\ \epsilon_2 \end{pmatrix} = \begin{pmatrix} 1 - x \\ 10\cdot(y - x^2) \end{pmatrix} $$
+$$ \begin{pmatrix} \epsilon_1 \\\ \epsilon_2 \end{pmatrix} = \begin{pmatrix} 1 - x \\\ 10\cdot(y - x^2) \end{pmatrix} $$
 
 for input value of $x$ and $y$. The sum of the squared residuals, SSR = $\epsilon_1^2 + \epsilon_2^2 = f(x, y)$ is the Rosenbrock function defined above. To minimize this SSR, pass the residual function and an initial guess as inputs to `Fitty.nlsfit()`, as shown below:    
 ```julia-repl
