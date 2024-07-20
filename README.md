@@ -1,8 +1,8 @@
 # `Fitty.jl`
 
-Fitty is a compact and fast Julia package for data fitting to mathematical models. It implements ordinary and weighted nonlinear least squares regression for parameter estimation, and Bayesian bootstrap to compute credible intervals (CIs). This repository contains the package source code and examples. 
+`Fitty.jl` is a compact and fast Julia package for data fitting to mathematical models. It implements ordinary and weighted nonlinear least squares regression for parameter estimation, and Bayesian bootstrap to compute credible intervals (CIs). This repository contains the package source code and example Jupyter notebooks.  
 
-## `Fitty` features
+## `Fitty.jl` features
 
 `Fitty` currently provides the following features:  
 - Ordinary and weighted nonlinear least squares fitting using a modern implementation of the 
@@ -21,36 +21,31 @@ Under the hood, `Fitty` implements a trust region interior reflective method, wh
 
 Below are some short demos of package features 
 
-## Example 1: Quickstart - minimize the Rosenbrock function
+## Example 1: Quickstart - Minimizing the Rosenbrock function
 
-`Fitty` implements the Levenberg-Marquardt algorithm that is accessible via the low level `LMfit()` function. The following code block uses this function to minimize the [Rosenbrock function](https://en.wikipedia.org/wiki/Rosenbrock_function):
-```math
+The [Rosenbrock function](https://en.wikipedia.org/wiki/Rosenbrock_function) defined below is a common test problem for nonlinear least squares minimization:
+$$
 f(x, y) = (1 - x)^2 + 100 \cdot (y - x^2)^2
-```
-that has a single global minimum at $x = y = 1$ inside a long, narrow and non-convex valley. To minimize this function, define a function that returns a vector of two "residuals" for some input value of the parameters. The sum of the squared residuals (SSR) is the Rosenbrock function defined above. This residual function and an initial guess for the values of $x$ and $y$ are supplied as inputs to `Fitty.LMfit()` to minimize the SSR.
+$$
+This function has a single global minimum at $x = y = 1$ that lies within a long, narrow and non-convex valley. Nonlinear least square algorithms can get stuck in the valley but not be able to converge to the minima. To minimize this function, first define a **residual function** that returns a vector of residuals:
+$$
+\begin{pmatrix} \epsilon_1 \\ \epsilon_2 \end{pmatrix} = \begin{pmatrix} 1 - x \\ 10\cdot(y - x^2) \end{pmatrix}
+$$
+for input value of $x$ and $y$. The sum of the squared residuals, SSR = $\epsilon_1^2 + \epsilon_2^2 = f(x, y)$ is the Rosenbrock function defined above. To minimize this SSR, pass the residual function and an initial guess as inputs to `Fitty.nlsfit()`, as shown below:
 
 ```julia-repl
-julia> # Define Rosenbrock function
-       Rosenbrock(θ) = [1 - θ.x, 100*(θ.y - θ.x^2)]
-Rosenbrock (generic function with 1 method)
+julia> # Define residuals for Rosenbrock function
+       f(θ) = [1 - θ.x, 10*(θ.y - θ.x^2)]
+f (generic function with 1 method)
 
 julia> # Minimize SSR starting with a non-optimal guess
-julia> guess = (x = -1.5, y = 1); # Starting guess away from global minima
-julia> fit = Fitty.nlsfit(Rosenbrock, guess)
-Fit converged in 48 steps from intial guess [-1.5, 1.0]
+       guess = (x = -1.5, y = 1); # Starting guess away from global minima
+
+julia> fit = Fitty.nlsfit(f, guess);
+Fit converged in 13 steps from intial guess [-1.5, 1.0]
 to final estimate [1.0, 1.0]
-Fit results: Table with 3 columns and 2 rows:
-     Parameter  Bounds       Estimate
-   ┌─────────────────────────────────
- 1 │ x          [-Inf, Inf]  1.0
- 2 │ y          [-Inf, Inf]  1.0
-=========================================
-Sum of squared residuals = 3.293e-16
-Degrees of freedom = 2 - 2 = 0
-Residual standard error = Inf
-=========================================
 ```
-The parameter estimates are at the global minima of the Rosenbrock function. The output table above displays more information, such as sum-of-squared residuals (SSR), and the degrees of freedom (dof).  The output of the optimizer contains the full optimizer history plotted below. The optimizer trajectory in parameter space is shown on the left and the value of the Rosenbrock function on the right.  
+The optimal values of $x$ and $y$ are at the global minima of the Rosenbrock function. The output of the optimizer also contains the full optimizer history that is plotted below. The trajectory in parameter space is shown on the left and the value of the Rosenbrock function on the right.  
 ![Optimizer trajectory in parameter space for the Rosenbrock function minimization](figures/RosenbrockOptimization.png) 
 
 ## Example 2: Data fitting with user-defined functions
@@ -103,16 +98,16 @@ Dict{Any, Any} with 2 entries:
 The two subsets are plotted below:  
 ![Puromycin dataset split by treatment](figures/puro-data.png)
 
-### Define model and residual
+### Define model and fit each dataset
 
 These data are fit with the Michelis Menten model that relates the reaction rate, $v$, to the substrate concentration, $c$:
-```math
+$$
 v = \frac{V_{\text{max}} \cdot c}{K_m + c}
-```
+$$
 
-where $V_{\text{max}}$ is the maximal reaction rate, and the $K_m$ (Michelis constant) is the substrate concentration for half-maximal reaction velocity ($v = V_{\text{max}}/2$ when $c = K_m$). To fit the data to this model:
+where $V_{\text{max}}$ is the maximal reaction rate, and the $K_m$ (Michelis constant) is the substrate concentration for half-maximal reaction velocity ($v = V_{\text{max}}/2$ when $c = K_m$). The next two code blocks show how to fit the two datasets to this model.
 
-1. first define a residual function:  
+1. Define model and a residual function:  
 ```julia-repl
 julia> # Michelis-Menten model
        model(θ, c) = @. θ.Vmax * c / (θ.Km + c);
@@ -121,9 +116,10 @@ julia> # Residual function
        residual(θ, df) = df.Rate - model(θ, df.Conc);
 
 ```
-### Fit to each dataset
 
-2. Then pass this residual as input to `nlsfit()` together with an initial guess for the two parameters. Set lower bounds for the parameter estimates to 0 to ensure the parameter estimates are biologically meaningful. Also set `bootstrap = true` to compute credible intervals (CIs):  
+2. Pass residual function and an initial guess as input to `nlsfit()`.  
+   Set lower bounds for the parameter estimates to 0 to constrain parameter estimates to biologically meaningful values.  
+   Also set `bootstrap = true` to compute credible intervals (CIs):  
 ```julia-repl
 julia> guess = (Vmax = 150, Km = 0.1);
 
@@ -179,10 +175,15 @@ The next plot shows the observed versus predicted values for the two fits, overl
   ![Posterior distribution of Vmax from puromycin fits](figures/puro-Vmax-post.png)
 - In contrast, the distributions of $K_m$ show an overlap:
   ![Posterior distribution of Km from puromycin fits](figures/puro-Km-post.png)
-- The joint posterior distribution shows the covariance between the two parameters for each treatment:
+  Taken together, these distributions and the estimated CIs support the hypothesis that puromycin treatment affects the maximal velocity of the reaction but not the Michelis constant. 
+- Finally, the joint posterior distribution shows the covariance between the two parameters for each treatment:
   ![Joint posterior distribution of Vmax and Km from puromycin fits](figures/puro-joint-post.png)
 
-Taken together, these distributions and the estimated CIs support the hypothesis that puromycin treatment affects the maximal velocity of the reaction but not the Michelis constant. 
+## More examples
+
+The complete code for these two examples is in [this notebook](notebooks/01-IntroToFitty.ipynb)
+
+
 
 
 
