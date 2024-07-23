@@ -51,6 +51,8 @@ The optimal values of $x$ and $y$ are at the global minima of the Rosenbrock fun
 
 This example uses the `Puromycin` dataset from the `RDatasets` package. These data report the rate of an enzymatic reaction at different substrate concentrations. The cells expressing the enzyme were either treated with puromycin or left untreated. The next code block loads this dataset and splits it into the two subsets:
 ```julia-repl
+julia> using RDatasets
+
 julia> # Load Puromycin dataset
        puro = dataset("datasets", "Puromycin")
 23×3 DataFrame
