@@ -179,6 +179,11 @@ The next plot shows the observed versus predicted values for the two fits, overl
 - Finally, the joint posterior distribution shows the covariance between the two parameters for each treatment:
   ![Joint posterior distribution of Vmax and Km from puromycin fits](figures/puro-joint-post.png)
 
+### Generate prediction envelope
+
+The parameter posterior distributions can be used to simulate a 95% prediction envelope for each fit:  
+![Fits and 95% prediction bands for puromycin data](figures/puro-pred-band.png)
+
 ## More examples
 
 The complete code for these two examples is in [this notebook](notebooks/01-IntroToFitty.ipynb)
