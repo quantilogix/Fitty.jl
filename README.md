@@ -1,21 +1,18 @@
-# `Fitty.jl`
+# `Fitty`
 
-`Fitty.jl` is a compact and fast Julia package for data fitting to mathematical models. It implements ordinary and weighted nonlinear least squares regression for parameter estimation, and Bayesian bootstrap to compute credible intervals (CIs). This repository contains the package source code and example Jupyter notebooks.  
+`Fitty` is a compact and fast Julia package for data fitting to mathematical models. It implements ordinary and weighted nonlinear least squares regression for parameter estimation, and Bayesian bootstrap to compute credible intervals (CIs). This repository contains the package source code and example Jupyter notebooks.
 
-## `Fitty.jl` features
+## Features
 
 `Fitty` currently provides the following features:  
-- Ordinary and weighted nonlinear least squares fitting using a modern implementation of the 
-- Parameter bounds
-- Tables of parameter estimates, standard errors and confidence intervals using the standard normal approximation
-- Bayesian bootstrap resampling to generate parameter posterior distributions and credible intervals (CIs)
-- A small number of user-friendly, well-documented functions for typical data fitting workflows
-- Results contain optimizer trajectory in parameter space
-- Multi-start optimization
-- Utility functions for fitting commonly used models in biological/physical sciences, such as Michelis-Menten enzyme kinetics, Emax and Hill dose response functions, etc. 
-- Jupyter notebooks with complete data fitting examples
+- Ordinary and weighted nonlinear least squares fitting
+- Support for parameter bounds
+- Support for holding some parameters fixed and fit others
+- Confidence intervals computed using standard normal approximation
+- Bayesian bootstrap resampling to generate parameter posterior distributions and compute credible intervals (CIs)
+- Results contain complete optimizer history in parameter space
 
-Under the hood, `Fitty` implements a trust region interior reflective method, which is a modern version of the well-known Levenberg-Marquardt algorithm with support for parameter bounds and several improvements for better convergence and numerical stability. Gradients are computed forward mode automatic differentiation provided by the `ForwardDiff.jl` package.
+Under the hood, `Fitty` implements a trust region interior reflective method, which is a modern version of the well-known Levenberg-Marquardt algorithm with support for parameter bounds and several improvements for better convergence and numerical stability. Gradients are computed forward mode automatic differentiation provided by the `ForwardDiff.jl` package, with fallback to finite difference calculations using `FiniteDifferences`.
 
 `Fitty` is targeted toward scientists who work with experimental data and need a fast and reliable tool for data fitting. confidence interval. Relatively little Julia coding experience is needed beyond define your model and residuals as Julia functions.
 

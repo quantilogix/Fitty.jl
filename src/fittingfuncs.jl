@@ -28,7 +28,6 @@ function nlsfit(residualfunc::Function, guess::Union{Vector, NamedTuple};
     end
     # Create vector of initial guesses
     guessVals = (guess isa Vector) ? Float64.(guess) : Float64.(collect(values(guess)))
-    
     # Check that initial guess is within bounds
     if !all(lb .<= guessVals .<= ub)
         throw(ArgumentError("""Initial guess $(guess) lies outside the
@@ -116,17 +115,33 @@ function nlsfit(residualfunc::Function, guess::Union{Vector, NamedTuple};
   return results
 end
 
+"""Create Jacobian function for input residual function
+"""
+function makeJac(res::Function)
+    function jac(x::Vector{Float64})
+        try 
+            ForwardDiff.jacobian(res, x)
+        catch e
+            @debug "ForwardDiff failed to compute Jacobian at $x. See error below:"
+            @debug e
+            @debug "Using FiniteDifferences to compute Jacobian"
+            jacobian(central_fdm(5, 1), res, x)[1]
+        end
+    end
+end
+
 """Compute a single step of the trust-region interior 
 reflection algorithm for input residual function, 
 current guess, damping parameter λ, and scaling
 """
-function onestep(res::Function, guess::Vector{Float64}, 
+function onestep(res::Function, jac::Function, guess::Vector{Float64}, 
                  idxFixed::Vector{Int64}, λ::Float64, 
                  scaling::String = "unif")
     # Compute residuals at input guess
     err = res(guess)
     # Compute Jacobian 
-    fullJ = ForwardDiff.jacobian(res, guess)
+    #fullJ = ForwardDiff.jacobian(res, guess)
+    fullJ = jac(guess)
     # Remove columns for fixed parameters
     if !isempty(idxFixed)
         J = fullJ[:, 1:end .∉ [idxFixed]]
@@ -182,12 +197,14 @@ function tirFit(residualfunc::Function, guess::Vector{Float64},
     traj[1,:] = guess
     ssr[1] = fSSR(guess)
     @debug "Initial guess: $guess with SSR = $(ssr[1])"
+    # Define Jacobian function
+    jacfunc = makeJac(residualfunc)
     # Iteratively update guess
     tries, k, λ, convergence = 1, 1, λ0, 0
     while (convergence == 0) && (tries <= maxiter)
         # Propose move
         r = traj[k,:] 
-        δ0, J = onestep(residualfunc, r, idxFixed, λ, scaling)
+        δ0, J = onestep(residualfunc, jacfunc, r, idxFixed, λ, scaling)
         p0 = r + δ0
         @debug "Try #$tries: Proposed step: $(r[idxVar]) + $(δ0[idxVar]) -> $(p0[idxVar])" 
         # Check for bounds
@@ -280,7 +297,8 @@ function tirFit(residualfunc::Function, guess::Vector{Float64},
         aic = 2*mvar + n * log(ssr[k])
         bic = mvar * log(n) + n * log(ssr[k])
         # Compute covariance matrix
-        J = ForwardDiff.jacobian(residualfunc, fit)
+        #J = ForwardDiff.jacobian(residualfunc, fit)
+        J = jacfunc(fit)
         local cov
         if mvar == m
             cov = χ2ν * inv(J'*J)

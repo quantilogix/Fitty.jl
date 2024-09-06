@@ -12,7 +12,7 @@
 
 module Fitty
 
-using DataFrames, ForwardDiff, LinearAlgebra, Printf, TypedTables
+using DataFrames, ForwardDiff, FiniteDifferences, LinearAlgebra, Printf, TypedTables
 using Distributions: cdf, Dirichlet, Normal, quantile, TDist
 using Statistics: mean
 using StatsBase: ecdf
