@@ -183,7 +183,7 @@ The parameter posterior distributions can be used to simulate a 95% prediction e
 
 ## More examples
 
-The complete code for these two examples is in [this notebook](notebooks/01-IntroToFitty.ipynb)
+The complete code for these two examples is in [this notebook](notebooks/00-IntroToFitty.ipynb)
 
 
 
