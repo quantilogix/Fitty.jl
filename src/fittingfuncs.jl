@@ -5,9 +5,43 @@
 
 # Define fitting functions
 
-"""Ordinary or weighted nonlinear least squares fit 
-with parameter bounds and Bayesian bootstrap
-to compute parameter confidence intervals
+"""
+Ordinary or weighted nonlinear least squares fit 
+with support for parameter bounds, and Bayesian bootstrap
+resampling to compute parameter posterior distributions 
+and credible intervals
+
+    nlsfit(residualfunc::Function, guess::Union{Vector, NamedTuple}; 
+           data = nothing, 
+           weights = 1, 
+           lb = -Inf, ub = Inf,
+           bootstrap::Bool = false, 
+           nboot::Int = 2000, 
+           conflevel = 0.95, 
+           quiet = false, 
+           kwargs...)
+
+Minimize the input residual function `residualfunc` starting
+with the initial guess `guess`. The residual function takes
+a parameter vector or named tuple as input and outputs a 
+vector of residuals. `nlsfit` minimizes the sum of squared 
+residuals and returns best fit parameter estimates
+
+See https://quantilogix.io/Fitty for detailed usage examples
+
+# Quickstart - Rosenbrock function
+```julia-repl
+julia> # Define residuals for Rosenbrock function
+       f(θ) = [1 - θ.x, 10*(θ.y - θ.x^2)]
+f (generic function with 1 method)
+
+julia> # Minimize SSR starting with a non-optimal guess
+       guess = (x = -1.5, y = 1); # Starting guess away from global minima
+
+julia> fit = Fitty.nlsfit(f, guess);
+Fit converged in 13 steps from intial guess [-1.5, 1.0]
+to final estimate [1.0, 1.0]
+```
 """
 function nlsfit(residualfunc::Function, guess::Union{Vector, NamedTuple}; 
                  data = nothing, weights = 1, lb = -Inf, ub = Inf,

@@ -16,7 +16,12 @@ Under the hood, `Fitty` implements a trust region interior reflective method, wh
 
 `Fitty` is targeted toward scientists who work with experimental data and need a fast and reliable tool for data fitting. confidence interval. Relatively little Julia coding experience is needed beyond define your model and residuals as Julia functions.
 
-Below are some short demos of package features 
+Below are some short demos of package features. To get started, first add the package:
+```julia-repl
+using Pkg
+Pkg.add(url = "https://github.com/quantilogix/Fitty.jl")
+import Fitty
+```
 
 ## Example 1: Quickstart - Minimizing the Rosenbrock function
 
