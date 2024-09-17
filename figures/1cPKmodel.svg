@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8in"
+   height="3.112195in"
+   viewBox="0 0 203.2 79.049753"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   sodipodi:docname="1cPKmodel.svg"
+   inkscape:export-filename="1cPKmodel.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="in"
+     showgrid="false"
+     inkscape:zoom="1.4717116"
+     inkscape:cx="419.5795"
+     inkscape:cy="219.47235"
+     inkscape:window-width="1440"
+     inkscape:window-height="847"
+     inkscape:window-x="0"
+     inkscape:window-y="38"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer3"
+     inkscape:export-bgcolor="#ffffffff">
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid2"
+       units="in"
+       originx="-50.937256"
+       originy="-54.71833"
+       spacingx="0"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="10"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : -28.900247 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="279.39999 : -28.900247 : 1"
+       inkscape:persp3d-origin="139.7 : -64.883579 : 1"
+       id="perspective3" />
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow-8-7"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Rounded arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8-7-0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="RoundedArrow-8-7-9"
+       refX="0"
+       refY="0"
+       orient="auto-start-reverse"
+       inkscape:stockid="Rounded arrow"
+       markerWidth="1"
+       markerHeight="1"
+       viewBox="0 0 1 1"
+       inkscape:isstock="true"
+       inkscape:collect="always"
+       preserveAspectRatio="xMidYMid">
+      <path
+         transform="scale(0.7)"
+         d="m -0.21114562,-4.1055728 6.42229122,3.21114561 a 1,1 90 0 1 0,1.78885438 L -0.21114562,4.1055728 A 1.236068,1.236068 31.717474 0 1 -2,3 v -6 a 1.236068,1.236068 148.28253 0 1 1.78885438,-1.1055728 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:none"
+         id="path8-7-0-9" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Compartments"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-50.937258,-54.718331)">
+    <rect
+       style="opacity:0.65;fill:#ffcc00;stroke:#ffcc00;stroke-width:0.774442;stroke-linecap:butt;stroke-dasharray:none"
+       id="rect3"
+       width="58.976471"
+       height="53.635277"
+       x="125.19176"
+       y="66.901817"
+       ry="3.3289821" />
+    <g
+       inkscape:label="Compartments"
+       inkscape:groupmode="layer"
+       id="layer1-1"
+       transform="matrix(1.5892385,0,0,1.5892385,45.114682,-29.503172)"
+       style="fill:#ff6600;stroke:#d45500" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Arrows"
+     transform="translate(-50.937258,-54.718331)">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;marker-end:url(#RoundedArrow-8-7)"
+       d="m 169.52081,93.719459 20.28606,0"
+       id="path3-0-3"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.529167;stroke-dasharray:none;marker-end:url(#RoundedArrow-8-7-9)"
+       d="m 120.10873,93.719459 h 24.06143"
+       id="path3-0-3-7"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Text"
+     transform="translate(-50.937258,-54.718331)">
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';opacity:1;fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="126.68396"
+       y="63.299015"
+       id="text12"><tspan
+         sodipodi:role="line"
+         id="tspan12"
+         style="font-size:8.46667px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="126.68396"
+         y="63.299015">V<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan2">d</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="150.48524"
+       y="95.639755"
+       id="text12-7"><tspan
+         sodipodi:role="line"
+         id="tspan12-0"
+         style="font-style:italic;font-size:8.46667px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="150.48524"
+         y="95.639755">c(t)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="128.11655"
+       y="90.24147"
+       id="text12-7-1"><tspan
+         sodipodi:role="line"
+         id="tspan12-0-37"
+         style="font-style:italic;font-size:6.35px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="128.11655"
+         y="90.24147">k<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan1">abs</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.35px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="173.37585"
+       y="90.246506"
+       id="text12-7-1-5"><tspan
+         sodipodi:role="line"
+         id="tspan12-0-37-8"
+         style="font-style:italic;font-size:6.35px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="173.37585"
+         y="90.246506">k<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan1-2">el</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="196.42229"
+       y="96.390099"
+       id="text12-7-65"><tspan
+         sodipodi:role="line"
+         id="tspan12-0-41"
+         style="font-style:italic;font-size:8.46667px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="196.42229"
+         y="96.390099">Ø</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8.46667px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';fill:#000000;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="95.235786"
+       y="96.354958"
+       id="text12-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan12-0-3"
+         style="font-style:normal;font-size:8.46667px;fill:#000000;stroke:none;stroke-width:0.705556"
+         x="95.235786"
+         y="96.354958">Dose</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Frame"
+     transform="translate(-18.666901,-8.5960585)">
+    <rect
+       style="opacity:1;fill:none;stroke:#4d4d4d;stroke-width:0.259898;stroke-linecap:butt;stroke-dasharray:none"
+       id="rect14"
+       width="121.25755"
+       height="78.789856"
+       x="60.601021"
+       y="8.7260075"
+       ry="1.4451438"
+       rx="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.93889px;line-height:0px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';opacity:1;fill:#333333;stroke:none;stroke-width:0.705556;stroke-linecap:butt;stroke-dasharray:none"
+       x="66.597557"
+       y="84.401512"
+       id="text15"><tspan
+         sodipodi:role="line"
+         id="tspan15"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:Calibri;-inkscape-font-specification:Calibri;baseline-shift:baseline;fill:#333333;stroke:none;stroke-width:0.705556"
+         x="66.597557"
+         y="84.401512">© Quantilogix LLC, 2024 • All rights reserved </tspan></text>
+  </g>
+</svg>
