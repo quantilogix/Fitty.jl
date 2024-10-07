@@ -39,7 +39,7 @@ julia> # Minimize SSR starting with a non-optimal guess
        guess = (x = -1.5, y = 1); # Starting guess away from global minima
 
 julia> fit = Fitty.nlsfit(f, guess);
-Fit converged in 13 steps from intial guess [-1.5, 1.0]
+Fit converged in 13 steps from initial guess [-1.5, 1.0]
 to final estimate [1.0, 1.0]
 ```
 """
@@ -307,7 +307,7 @@ function tirFit(residualfunc::Function, guess::Vector{Float64},
     end
     if convergence == 0 # Fit did not converge
         if !(quiet)
-            println("Fit did not converge in $maxiter iterations starting with intial guess $guess")
+            println("Fit did not converge in $maxiter iterations starting with initial guess $guess")
             println("Try a different starting guess, increase maxiter, or increase tolerances")
             println()
         end
@@ -346,7 +346,7 @@ function tirFit(residualfunc::Function, guess::Vector{Float64},
         stderr = sqrt.(diag(cov))
         # Print parameter table to console
         if !(quiet)
-            println("Fit converged in $(k-1) steps from intial guess ", guess)
+            println("Fit converged in $(k-1) steps from initial guess ", guess)
             println("to final estimate ", round.(fit, digits = 3))
         end
         return (        fit = fit,
