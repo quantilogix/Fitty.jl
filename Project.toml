@@ -4,6 +4,7 @@ authors = ["Raibatak Das"]
 version = "0.1.0-DEV"
 
 [deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
 DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 FiniteDifferences = "26cc04aa-876d-5657-8c51-4c34ba976000"
@@ -16,10 +17,11 @@ StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
 TypedTables = "9d95f2ec-7b3d-5a63-8d20-e2491e220bb9"
 
 [compat]
-DataFrames = "1.6"
+CSV = "0.10"
+DataFrames = "1.7"
 Distributions = "0.25"
-ForwardDiff = "0.10"
 FiniteDifferences = "0.12"
+ForwardDiff = "0.10"
 NaNMath = "1.0"
 Statistics = "1.10"
 StatsBase = "0.34"

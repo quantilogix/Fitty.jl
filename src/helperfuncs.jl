@@ -3,8 +3,20 @@
 # © Raibatak Das & Quantilogix LLC, 2024
 # MIT License
 
-# Define helper functions to pick good initial conditions
-# and algorithm settings
+# Helper functions
+
+datasets = Dict("DNase" => "../data/DNase.csv")
+
+function loadDataset(name::String)
+    local src
+    try
+        src = datasets[name]
+    catch e
+        throw(KeyError(name, "Not a valid dataset name"))
+    end
+    CSV.read(src, DataFrame)
+end
+    
 
 """Test fits with different scalings 
 """
